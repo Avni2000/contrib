@@ -78,7 +78,7 @@ endmacro()
 ## downloads the archive for the given library
 ## @param libname The library that should be downloaded
 macro(download_contrib_archive libname)
-  set(_BASE_URL "https://github.com/OpenMS/contrib-sources/releases/download/2024-04-29-000000/")
+  set(_BASE_URL "https://github.com/Avni2000/contrib-libs-temp/releases/tag/2025-06-15-000000/") #for now, let's make a temp download contrib to make a whole cmake script.  
 
   # the files/folders where downloads are stored
   set(_archive_folder "${PROJECT_BINARY_DIR}/archives")

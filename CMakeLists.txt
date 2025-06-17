@@ -76,6 +76,7 @@
 ## GLPK:   download from http://ftp.gnu.org/gnu/glpk/glpk-4.46.tar.gz
 ## COIN-OR: we use the CoinMP package available from
 ##         http://www.coin-or.org/download/source/CoinMP/CoinMP-1.3.3.tgz
+## 
 
 
 ## some words:
@@ -92,7 +93,7 @@
 
 # Determine what to build (all or single library)
 set( BUILD_TYPE LIST CACHE STRING "Can be used to restrict building to a single library: ALL,LIBSVM,XERCESC,BOOST,COINOR,BZIP2,ZLIB,GLPK,KISSFFT,OPENMP")
-set( VALID_BUILD_TYPES "ALL" "LIBSVM" "XERCESC" "BOOST" "COINOR" "BZIP2" "ZLIB" "GLPK" "EIGEN" "KISSFFT" "HDF5" "OPENMP")
+set( VALID_BUILD_TYPES "ALL" "LIBSVM" "XERCESC" "BOOST" "COINOR" "BZIP2" "ZLIB" "GLPK" "EIGEN" "KISSFFT" "HDF5" "OPENMP" "ARROW")
 
 # check build type
 if (BUILD_TYPE STREQUAL "HELP" OR BUILD_TYPE STREQUAL "LIST")
@@ -196,7 +197,7 @@ set(EIGEN_DIR ${CONTRIB_BIN_SOURCE_DIR}/eigen-3.4.0)
 set(KISSFFT_DIR ${CONTRIB_BIN_SOURCE_DIR}/kissfft)
 set(HDF5_DIR ${CONTRIB_BIN_SOURCE_DIR}/hdfsrc)
 set(OPENMP_DIR ${CONTRIB_BIN_SOURCE_DIR}/openmp-12.0.1.src)
-
+set(ARROW_DIR ${CONTRIB_BIN_SOURCE_DIR}/apache-arrow-20.0.0.tar.gz)
 ## source(archive) paths
 ## PLEASE upload all source archives to
 ##     https://abibuilder.cs.uni-tuebingen.de/archive/openms/contrib/source_packages/
@@ -274,6 +275,11 @@ set(ARCHIVE_HDF5_SHA1 "0e464802c2f9185f8b8db6e04149ca1d3eaf27c5")
 set(ARCHIVE_OPENMP openmp-12.0.1.src.tar.xz)
 set(ARCHIVE_OPENMP_tar openmp-12.0.1.src.tar)
 set(ARCHIVE_OPENMP_SHA1 "7c051f6050ff23763b253a757927774b5eeaf644")
+
+set(ARCHIVE_ARROW apache-arrow-20.0.0.tar.gz)
+set(ARCHIVE_ARROW_TAR  apache-arrow-20.0.0.tar)
+set(ARCHIVE_ARROW_SHA1 "21d2a5e52712c9f9d7740065636aa6e0b94f1a2b")
+
 
 ## necessary for clean up .. change if install process of library changes
 set(INCLUDE_DIR_BOOST ${CONTRIB_BIN_INCLUDE_DIR}/boost)
