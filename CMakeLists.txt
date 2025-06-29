@@ -197,24 +197,24 @@ set(EIGEN_DIR ${CONTRIB_BIN_SOURCE_DIR}/eigen-3.4.0)
 set(KISSFFT_DIR ${CONTRIB_BIN_SOURCE_DIR}/kissfft)
 set(HDF5_DIR ${CONTRIB_BIN_SOURCE_DIR}/hdfsrc)
 set(OPENMP_DIR ${CONTRIB_BIN_SOURCE_DIR}/openmp-12.0.1.src)
-set(ARROW_DIR ${CONTRIB_BIN_SOURCE_DIR}/apache-arrow-20.0.0.tar.gz)
+set(ARROW_DIR ${CONTRIB_BIN_SOURCE_DIR}/apache-arrow-20.0.0)
 ## source(archive) paths
 ## PLEASE upload all source archives to
 ##     https://abibuilder.cs.uni-tuebingen.de/archive/openms/contrib/source_packages/
 ## and provide the necessary information below
 ##  ARCHIVE_<LIBNAME> the name of the archive as it was uploaded
 ##  ARCHIVE_<LIBNAME>_TAR the name of the tar in the tar.gz
-##  ARCHIVE_<LIBNAME>_SHA1 the sha1 of the file uploaded to sourceforge
+##  ARCHIVE_<LIBNAME>_SHA1 the sha256 of the file uploaded to sourceforge
 ## e.g.
 ##  set(ARCHIVE_ZLIB zlib.tar.gz)
 ##  set(ARCHIVE_ZLIB_TAR zlib.tar)
-##  set(ARCHIVE_ZLIB_SHA1 "8e8b93fa5eb80df1afe5422309dca42964562d7e")
+##  set(ARCHIVE_ZLIB_SHA256 "8e8b93fa5eb80df1afe5422309dca42964562d7e")
 ## NOTE: for local development you can simply place the *.tar.gz in the binary
-##       directory to prevent the download and sha1 verification
+##       directory to prevent the download and sha256 verification
 
 set(ARCHIVE_BZIP2 bzip2-1.0.5.tar.gz)
 set(ARCHIVE_BZIP2_TAR bzip2-1.0.5.tar)
-set(ARCHIVE_BZIP2_SHA256 "8b02713ea0c8eb501cc8bdac4432d7f29700f767")
+set(ARCHIVE_BZIP2_SHA256 "f7bf5368309d76e5daf3a89d4d1bea688dac7780742e7a0ae1af19be9316fe22")
 
 # set(ARCHIVE_ZLIB zlib-1.2.5.tar.gz)
 # set(ARCHIVE_ZLIB_TAR  zlib-1.2.5.tar)
@@ -278,7 +278,7 @@ set(ARCHIVE_OPENMP_SHA256 "60fe79440eaa9ebf583a6ea7f81501310388c02754dbe7dc21077
 
 set(ARCHIVE_ARROW apache-arrow-20.0.0.tar.gz)
 set(ARCHIVE_ARROW_TAR  apache-arrow-20.0.0.tar)
-set(ARCHIVE_ARROW_SHA256 "d7580fc75f5bf7538c1e697575d8db306cf2c816a6a24161c06574896f9d4d7c")
+set(ARCHIVE_ARROW_SHA256 "3a0919e56b5c6d3757d8394a1baa5fc1415f21b3a951c87924e505b9a3ac0043")
 
 
 ## necessary for clean up .. change if install process of library changes
@@ -289,7 +289,7 @@ set(INCLUDE_DIR_COINOR ${CONTRIB_BIN_INCLUDE_DIR}/coin)
 set(INCLUDE_DIR_EIGEN ${CONTRIB_BIN_INCLUDE_DIR}/eigen3)
 set(INCLUDE_DIR_KISSFFT ${CONTRIB_BIN_INCLUDE_DIR}/kissfft)
 set(INCLUDE_DIR_OPENMP ${CONTRIB_BIN_INCLUDE_DIR}/openmp.src)
-
+set(INCLUDE_DIR_ARROW ${CONTRIB_BIN_INCLUDE_DIR}/arrow)
 ## hack for simple libs that do not have include directories
 set(INCLUDE_FILES_LIBSVM ${CONTRIB_BIN_INCLUDE_DIR}/svm.h)
 set(INCLUDE_FILES_BZIP2 ${CONTRIB_BIN_INCLUDE_DIR}/bzlib.h ${CONTRIB_BIN_INCLUDE_DIR}/bzlib_private.h)
@@ -497,6 +497,7 @@ include ("${CMAKE_SOURCE_DIR}/libraries.cmake/eigen.cmake")
 include ("${CMAKE_SOURCE_DIR}/libraries.cmake/kissfft.cmake")
 include ("${CMAKE_SOURCE_DIR}/libraries.cmake/hdf5.cmake")
 include ("${CMAKE_SOURCE_DIR}/libraries.cmake/openmp.cmake")
+include ("${CMAKE_SOURCE_DIR}/libraries.cmake/arrow.cmake")
 
 ## build mac os x specific C/C++ flags
 set( OPENMS_CONTRIB_MACOSX_MIXED_MODE 0 CACHE INTERNAL "building multiple architectures on MacOSX" FORCE)
@@ -511,7 +512,7 @@ foreach(BTG IN LISTS BUILD_TYPE)
       message(STATUS " * ${BT}")
     endforeach( BT VALID_BUILD_TYPES )
     message(FATAL_ERROR "Aborting contrib build!")
-  else( ${list_pos} EQUAL -1 )
+  else()
     message(STATUS "BUILD_TYPE: ${BTG} (one of: ${VALID_BUILD_TYPES})")
   endif( ${list_pos} EQUAL -1 )
 endforeach()

@@ -78,7 +78,7 @@ endmacro()
 ## downloads the archive for the given library
 ## @param libname The library that should be downloaded
 macro(download_contrib_archive libname)
-  set(_BASE_URL "https://github.com/Avni2000/contrib-libs-temp/releases/tag/2025-06-15-000000/") #for now, let's make a temp download contrib to make a whole cmake script.  
+  set(_BASE_URL "https://github.com/Avni2000/contrib-libs-temp/releases/download/2025-06-15-000000/") #for now, let's make a temp download contrib to make a whole cmake script.  
   message(STATUS "downloading from" ${_BASE_URL})
   # the files/folders where downloads are stored
   set(_archive_folder "${PROJECT_BINARY_DIR}/archives")
@@ -139,7 +139,7 @@ endmacro()
 ## @param zip_args_varname Name of the variable containing the 7z arguments (without the actual archive)
 ## @param libfile_varname Name of the variable containing the actual archive
 ## @param libname Name of the library (should be upper-case -> ${${libname}_DIR} should exist (see top of this file))
-## @param checkfile Name of the (last) file to be extracted from the archive (we will use ${${libname}_DIR}/${checkfile} to see if it exists)
+## @param checkfile Name of a unique file in the archive: "CREDITS", "AUTHORS (we will use ${${libname}_DIR}/${checkfile} to see if it exists)
 MACRO (OPENMS_SMARTEXTRACT zip_args_varname libfile_varname libname checkfile)
   string(TOUPPER ${libname} libnameUP)
 
